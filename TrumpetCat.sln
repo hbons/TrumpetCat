@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrumpetCat", "TrumpetCat\TrumpetCat.csproj", "{59FF308A-34FE-417D-A391-A7275A973B9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrumpetCat.Server", "TrumpetCat.Server\TrumpetCat.Server.csproj", "{4969070A-5CEF-4BD8-A66B-93379F29E9FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrumpetCat.Tests", "TrumpetCat.Tests\TrumpetCat.Tests.csproj", "{2D342A6E-2A66-4B5B-889A-E5FA89406607}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59FF308A-34FE-417D-A391-A7275A973B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59FF308A-34FE-417D-A391-A7275A973B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59FF308A-34FE-417D-A391-A7275A973B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59FF308A-34FE-417D-A391-A7275A973B9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4969070A-5CEF-4BD8-A66B-93379F29E9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4969070A-5CEF-4BD8-A66B-93379F29E9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4969070A-5CEF-4BD8-A66B-93379F29E9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4969070A-5CEF-4BD8-A66B-93379F29E9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D342A6E-2A66-4B5B-889A-E5FA89406607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D342A6E-2A66-4B5B-889A-E5FA89406607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D342A6E-2A66-4B5B-889A-E5FA89406607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D342A6E-2A66-4B5B-889A-E5FA89406607}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = None
+		$1.ResourceNamePolicy = FileFormatDefault
+		$0.TextStylePolicy = $2
+		$2.inheritsSet = VisualStudio
+		$2.inheritsScope = text/plain
+		$2.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $3
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/x-csharp
+		$3.scope = text/x-csharp
+	EndGlobalSection
+EndGlobal
