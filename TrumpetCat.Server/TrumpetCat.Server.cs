@@ -12,7 +12,7 @@
 
 
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Threading.Tasks;
 
 using NetMQ;
@@ -39,7 +39,7 @@ namespace TrumpetCat
         int PublisherPort = 5556;
 
         NetMQContext context = NetMQContext.Create ();
-        HashSet<CacheItem> cache = new HashSet<CacheItem> ();
+        Hashtable cache = new Hashtable ();
 
 
         // TODO: Last Value Cache
@@ -74,7 +74,14 @@ namespace TrumpetCat
                         try {
                             song = response_socket.ReceiveString ();
                             notes = response_socket.ReceiveString ();
-                            cache.Add (new CacheItem { Song = song, Notes = notes });
+
+                            if (song.Length > 64)
+                                song = song.Substring (64);
+
+                            if (notes.Length > 64)
+                                notes = notes.Substring (64);
+
+                            cache [song] = notes;
 
                             Console.WriteLine ("[response_socket] Received: song: {0}, notes: {1}", song, notes);
 
@@ -95,18 +102,6 @@ namespace TrumpetCat
                         response_socket.Send ("Meow?");
                     }
                 }
-            }
-        }
-
-
-        class CacheItem
-        {
-            public string Song;
-            public string Notes;
-            
-            public override int GetHashCode ()
-            {
-                return Song.GetHashCode ();
             }
         }
     }
