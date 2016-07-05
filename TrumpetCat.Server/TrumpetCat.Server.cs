@@ -62,7 +62,7 @@ namespace TrumpetCat
                     if (message.Equals ("ping")) {
                         Console.WriteLine ("[response_socket] Received: {0}", message);
 
-                        int timestamp = (int)DateTime.UtcNow.Subtract (new DateTime (1970, 1, 1)).TotalSeconds;
+                        int timestamp = (int) DateTime.UtcNow.Subtract (new DateTime (1970, 1, 1)).TotalSeconds;
                         response_socket.Send (timestamp.ToString ());
 
                         Console.WriteLine ("[response_socket] Sent: {0}", timestamp);
@@ -76,10 +76,10 @@ namespace TrumpetCat
                             notes = response_socket.ReceiveString ();
 
                             if (song.Length > 64)
-                                song = song.Substring (64);
+                                song = song.Substring (0, 64);
 
                             if (notes.Length > 64)
-                                notes = notes.Substring (64);
+                                notes = notes.Substring (0, 64);
 
                             cache [song] = notes;
 
