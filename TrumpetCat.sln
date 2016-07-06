@@ -35,6 +35,7 @@ Global
 		$2.inheritsSet = VisualStudio
 		$2.inheritsScope = text/plain
 		$2.scope = text/x-csharp
+		$2.FileWidth = 120
 		$0.CSharpFormattingPolicy = $3
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp

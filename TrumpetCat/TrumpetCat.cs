@@ -15,23 +15,23 @@ using System;
 using System.Threading;
 
 using NetMQ;
+using NetMQ.Sockets;
 
 namespace TrumpetCat
 {
-    public static class TrumpetCat
+    public static class Trumpet
     {
-        public static string Address = "127.0.0.1";
-        public static int RequestPort = 5555;
-        public static int PublisherPort = 5556;
-
         static NetMQContext context = NetMQContext.Create ();
+
+        public static readonly string Address = "127.0.0.1";
+        public static readonly int RequestPort = 5555;
+        public static readonly int PublisherPort = 5556;
 
 
         public static void Blow (string song, string notes)
         {
             new Thread (() => {
-                using (NetMQSocket request_socket = context.CreateRequestSocket ())
-                {
+                using (NetMQSocket request_socket = context.CreateRequestSocket ()) {
                     request_socket.Connect (string.Format ("tcp://{0}:{1}", Address, RequestPort));
                     request_socket.SendMore ("blow").SendMore (song).Send (notes);
 
@@ -46,7 +46,7 @@ namespace TrumpetCat
 
 
         static Thread thread;
-        static NetMQSocket subscriber_socket;
+        static SubscriberSocket subscriber_socket;
 
         public static void Listen (string song, string address = null)
         {
@@ -73,7 +73,7 @@ namespace TrumpetCat
         static void OnReceived (NetMQSocket subscriber_socket)
         {
             while (true) {
-                string song  = subscriber_socket.ReceiveString ();
+                string song = subscriber_socket.ReceiveString ();
                 string notes = subscriber_socket.ReceiveString ();
 
                 Blowed (song, notes);

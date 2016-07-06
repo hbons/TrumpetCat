@@ -15,50 +15,50 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace TrumpetCat
+using TrumpetCat;
+using TrumpetCat.Server;
+
+class Tests
 {
-    class Tests
+    static void Main (string[] args)
     {
-        static void Main (string[] args)
-        {
-            Task server_task = Task.Factory.StartNew (() => Server  ());
-            Task client_listener_task = Task.Factory.StartNew (() => ClientListener ());
-            Task client_sender_task = Task.Factory.StartNew (() => ClientSender ());
+        Task server_task = Task.Factory.StartNew (() => Server  ());
+        Task client_listener_task = Task.Factory.StartNew (() => ClientListener ());
+        Task client_sender_task = Task.Factory.StartNew (() => ClientSender ());
 
-            Task.WaitAll (server_task, client_listener_task, client_sender_task);
-        }
+        Task.WaitAll (server_task, client_listener_task, client_sender_task);
+    }
 
 
-        static void Server ()
-        {
-            var server = new TrumpetCatServer ();
-            server.Start ();
-        }
-
-    
-        static void ClientListener ()
-        {
-            TrumpetCat.Blowed += delegate (string song, string notes) {
-                Console.WriteLine ("TrumpetCat blowed! ({0}, {1})", song, notes);
-            };
-
-            TrumpetCat.Listen ("kittens", "127.0.0.1");
-            TrumpetCat.Listen ("puppies", "127.0.0.1");
-
-            while (true)
-                Thread.Sleep (1000);
-        }
+    static void Server ()
+    {
+        var server = new Server ();
+        server.Start ();
+    }
 
 
-        static void ClientSender ()
-        {
-            while (true) {
-                Thread.Sleep (2000);
+    static void ClientListener ()
+    {
+        Trumpet.Blowed += delegate (string song, string notes) {
+            Console.WriteLine ("Trumpet blowed! ({0}, {1})", song, notes);
+        };
 
-                TrumpetCat.Blow ("kittens", "meow");
-                TrumpetCat.Blow ("puppies", "woof");
-                TrumpetCat.Blow ("puppies", "another woof");
-            }
+        Trumpet.Listen ("kittens");
+        Trumpet.Listen ("puppies");
+
+        while (true)
+            Thread.Sleep (1000);
+    }
+
+
+    static void ClientSender ()
+    {
+        while (true) {
+            Thread.Sleep (1000);
+
+            Trumpet.Blow ("kittens", "meow");
+            Trumpet.Blow ("puppies", "woof");
+            Trumpet.Blow ("puppies", "another woof");
         }
     }
 }
