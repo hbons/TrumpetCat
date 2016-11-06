@@ -1,4 +1,3 @@
 # [Trumpet Cat](https://www.trumpet.cat/)
 
-A simple pub/sub messaging API.
-
+Simple PubSub service with Last Value Caching, based on ZeroMQ.
